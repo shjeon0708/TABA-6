@@ -1,18 +1,18 @@
 CREATE TABLE e_customer
-(id                         NUMBER(7)
+(id NUMBER(7)
    CONSTRAINT e_customer_id_nn NOT NULL,
- name                       VARCHAR2(50)
+ name VARCHAR2(50)
    CONSTRAINT e_customer_name_nn NOT NULL,
- phone                      VARCHAR2(25),
- address                    VARCHAR2(400),
- city                       VARCHAR2(30),
- state                      VARCHAR2(20),
- country                    VARCHAR2(30),
- zip_code                   VARCHAR2(75),
- credit_rating              VARCHAR2(9),
- sales_rep_id               NUMBER(7),
- region_id                  NUMBER(7),
- comments                   VARCHAR2(255),
+ phone VARCHAR2(25),
+ address VARCHAR2(400),
+ city VARCHAR2(30),
+ state VARCHAR2(20),
+ country VARCHAR2(30),
+ zip_code VARCHAR2(75),
+ credit_rating VARCHAR2(9),
+ sales_rep_id NUMBER(7),
+ region_id NUMBER(7),
+ comments VARCHAR2(255),
      CONSTRAINT e_customer_id_pk PRIMARY KEY (id),
      CONSTRAINT e_customer_credit_rating_ck
         CHECK (credit_rating IN ('EXCELLENT', 'GOOD', 'POOR')));
@@ -80,14 +80,13 @@ INSERT INTO e_customer VALUES (
 COMMIT;
 
 CREATE TABLE e_dept
-(id                         NUMBER(7)
+(id NUMBER(7)
    CONSTRAINT e_dept_id_nn NOT NULL,
- name                       VARCHAR2(25)
+ name VARCHAR2(25)
    CONSTRAINT e_dept_name_nn NOT NULL,
- region_id                  NUMBER(7),
+ region_id NUMBER(7),
      CONSTRAINT e_dept_id_pk PRIMARY KEY (id),
      CONSTRAINT e_dept_name_region_id_uk UNIQUE (name, region_id));
-
 INSERT INTO e_dept VALUES (
    10, 'Finance', 1);
 INSERT INTO e_dept VALUES (
@@ -115,125 +114,182 @@ INSERT INTO e_dept VALUES (
 COMMIT;
 
 CREATE TABLE e_emp
-(id                         NUMBER(7)
+(id NUMBER(7)
    CONSTRAINT e_emp_id_nn NOT NULL,
- last_name                  VARCHAR2(25)
+ last_name VARCHAR2(25)
    CONSTRAINT e_emp_last_name_nn NOT NULL,
- first_name                 VARCHAR2(25),
- userid                     VARCHAR2(8),
- start_date                 DATE,
- comments                   VARCHAR2(255),
- manager_id                 NUMBER(7),
- title                      VARCHAR2(25),
- dept_id                    NUMBER(7),
- salary                     NUMBER(11, 2),
- commission_pct             NUMBER(4, 2),
+ first_name VARCHAR2(25),
+ userid VARCHAR2(8),
+ start_date DATE,
+ comments VARCHAR2(255),
+ manager_id NUMBER(7),
+ title VARCHAR2(25),
+ dept_id NUMBER(7),
+ salary NUMBER(11, 2),
+ commission_pct NUMBER(4, 2),
      CONSTRAINT e_emp_id_pk PRIMARY KEY (id),
      CONSTRAINT e_emp_userid_uk UNIQUE (userid),
      CONSTRAINT e_emp_commission_pct_ck
         CHECK (commission_pct IN (10, 12.5, 15, 17.5, 20)));
 
-INSERT INTO e_emp VALUES (
-  1, 'Velasquez', 'Carmen', 'cvelasqu',
-   '03-MAR-90', , NULL, NULL, 'President',
-   50, 2500, NULL);
+INSERT INTO e_emp VALUES (1, 'Velasquez', 'Carmen', 'cvelasqu', '1990-03-03', NULL, NULL, 'President', 50, 2500, NULL);
+INSERT INTO e_emp VALUES (3, 'Nagayama', 'Midori', 'mnagayam','1991-06-17', NULL, 1, 'VP, Sales',31, 1400, NULL);
 INSERT INTO e_emp VALUES (
    2, 'Ngao', 'LaDoris', 'lngao',
-   '08-MAR-90', NULL, 1, 'VP, Operations',
+   '1990-08-03', NULL, 1, 'VP, Operations',
    41, 1450, NULL);
 INSERT INTO e_emp VALUES (
-   3, 'Nagayama', 'Midori', 'mnagayam',
-   '17-JUN-91', NULL, 1, 'VP, Sales',
-   31, 1400, NULL);
-INSERT INTO e_emp VALUES (
-   4, 'Quick-To-See', 'Mark', 'mquickto',
-   '07-APR-90', NULL, 1, 'VP, Finance',
+   4, 'Quick-To-See', '03k', 'mquickto',
+   '1990-07-04', NULL, 1, 'VP, Finance',
    10, 1450, NULL);
 INSERT INTO e_emp VALUES (
    5, 'Ropeburn', 'Audry', 'aropebur',
-   '04-MAR-90', NULL, 1, 'VP, Administration',
+   '1990-04-03', NULL, 1, 'VP, Administration',
    50, 1550, NULL);
 INSERT INTO e_emp VALUES (
    6, 'Urguhart', 'Molly', 'murguhar',
-   '18-JAN-91', NULL, 2, 'Warehouse Manager',
+   '1991-01-18', NULL, 2, 'Warehouse Manager',
    41, 1200, NULL);
 INSERT INTO e_emp VALUES (
    7, 'Menchu', 'Roberta', 'rmenchu',
-   '14-MAY-90', NULL, 2, 'Warehouse Manager',
+   '1990-05-14', NULL, 2, 'Warehouse Manager',
    42, 1250, NULL);
 INSERT INTO e_emp VALUES (
    8, 'Biri', 'Ben', 'bbiri',
-   '07-APR-90', NULL, 2, 'Warehouse Manager',
+   '1990-07-04', NULL, 2, 'Warehouse Manager',
    43, 1100, NULL);
 INSERT INTO e_emp VALUES (
    9, 'Catchpole', 'Antoinette', 'acatchpo',
-   '09-FEB-92', NULL, 2, 'Warehouse Manager',
+   '1992-09-02', NULL, 2, 'Warehouse Manager',
    44, 1300, NULL);
 INSERT INTO e_emp VALUES (
-   10, 'Havel', 'Marta', 'mhavel',
-   '27-FEB-91', NULL, 2, 'Warehouse Manager',
+   10, 'Havel', '03ta', 'mhavel',
+   '1991-02-27', NULL, 2, 'Warehouse Manager',
    45, 1307, NULL);
 INSERT INTO e_emp VALUES (
    11, 'Magee', 'Colin', 'cmagee',
-   '14-MAY-90', NULL, 3, 'Sales Representative',
+   '1990-05-14', NULL, 3, 'Sales Representative',
    31, 1400, 10);
 INSERT INTO e_emp VALUES (
    12, 'Giljum', 'Henry', 'hgiljum',
-   '18-JAN-92', NULL, 3, 'Sales Representative',
+   '1992-01-18', NULL, 3, 'Sales Representative',
    32, 1490, 12.5);
 INSERT INTO e_emp VALUES (
    13, 'Sedeghi', 'Yasmin', 'ysedeghi',
-   '18-FEB-91', NULL, 3, 'Sales Representative',
+   '1991-02-18', NULL, 3, 'Sales Representative',
    33, 1515, 10);
 INSERT INTO e_emp VALUES (
    14, 'Nguyen', 'Mai', 'mnguyen',
-   '22-JAN-92', NULL, 3, 'Sales Representative',
+   '1992-01-22', NULL, 3, 'Sales Representative',
    34, 1525, 15);
 INSERT INTO e_emp VALUES (
    15, 'Dumas', 'Andre', 'adumas',
-   '09-OCT-91', NULL, 3, 'Sales Representative',
+   '1991-09-10', NULL, 3, 'Sales Representative',
    35, 1450, 17.5);
 INSERT INTO e_emp VALUES (
    16, 'Maduro', 'Elena', 'emaduro',
-   '07-FEB-92', NULL, 6, 'Stock Clerk',
+   '1992-07-02', NULL, 6, 'Stock Clerk',
    41, 1400, NULL);
 INSERT INTO e_emp VALUES (
    17, 'Smith', 'George', 'gsmith',
-   '08-MAR-90', NULL, 6, 'Stock Clerk',
+   '1990-08-03', NULL, 6, 'Stock Clerk',
    41, 940, NULL);
 INSERT INTO e_emp VALUES (
    18, 'Nozaki', 'Akira', 'anozaki',
-   '09-FEB-91', NULL, 7, 'Stock Clerk',
+   '1991-09-02', NULL, 7, 'Stock Clerk',
    42, 1200, NULL);
 INSERT INTO e_emp VALUES (
    19, 'Patel', 'Vikram', 'vpatel',
-   '06-AUG-91', NULL, 7, 'Stock Clerk',
+   '1991-06-08', NULL, 7, 'Stock Clerk',
    42, 795, NULL);
 INSERT INTO e_emp VALUES (
    20, 'Newman', 'Chad', 'cnewman',
-   '21-JUL-91', NULL, 8, 'Stock Clerk',
+   '1991-1-07', NULL, 8, 'Stock Clerk',
    43, 750, NULL);
 INSERT INTO e_emp VALUES (
-   21, 'Markarian', 'Alexander', 'amarkari',
-   '26-MAY-91', NULL, 8, 'Stock Clerk',
+   21, 'Makarian', 'Alexander', 'amarkari',
+   '1991-6-05', NULL, 8, 'Stock Clerk',
    43, 850, NULL);
 INSERT INTO e_emp VALUES (
    22, 'Chang', 'Eddie', 'echang',
-   '30-NOV-90', NULL, 9, 'Stock Clerk',
+   '1990-11-30', NULL, 9, 'Stock Clerk',
    44, 800, NULL);
 INSERT INTO e_emp VALUES (
    23, 'Patel', 'Radha', 'rpatel',
-   '17-OCT-90', NULL, 9, 'Stock Clerk',
+   '1990-7-10', NULL, 9, 'Stock Clerk',
    34, 795, NULL);
 INSERT INTO e_emp VALUES (
    24, 'Dancs', 'Bela', 'bdancs',
-   '17-MAR-91', NULL, 10, 'Stock Clerk',
+   '1991-03-17', NULL, 10, 'Stock Clerk',
    45, 860, NULL);
 INSERT INTO e_emp VALUES (
    25, 'Schwartz', 'Sylvie', 'sschwart',
-   '09-MAY-91', NULL, 10, 'Stock Clerk',
+   '1991-09-05', NULL, 10, 'Stock Clerk',
    45, 1100, NULL);
-COMMIT;
+CREATE TABLE e_ord
+(id NUMBER(7)
+   CONSTRAINT e_ord_id_nn NOT NULL,
+ customer_id NUMBER(7)
+   CONSTRAINT e_ord_customer_id_nn NOT NULL,
+ date_ordered DATE,
+ date_shipped DATE,
+ sales_rep_id NUMBER(7),
+ total NUMBER(11, 2),
+ payment_type VARCHAR2(6),
+ order_filled VARCHAR2(1),
+     CONSTRAINT e_ord_id_pk PRIMARY KEY (id),
+     CONSTRAINT e_ord_payment_type_ck
+        CHECK (payment_type in ('CASH', 'CREDIT')),
+     CONSTRAINT e_ord_order_filled_ck
+       CHECK (order_filled in ('Y', 'N')));
+INSERT INTO e_ord VALUES (
+   100, 204, '1992-08-31', '1992-09-10',
+   11, 601100, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   101, 205, '1992-08-31', '1992-09-15',
+   14, 8056.6, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   102, 206, '1992-09-01', '1992-09-08',
+   15, 8335, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   103, 208, '1992-09-02', '1992-09-22',
+   15, 377, 'CASH', 'Y');
+INSERT INTO e_ord VALUES (
+   104, 208, '1992-09-03', '1992-09-23',
+   15, 32430, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   105, 209, '1992-09-04', '1992-09-18',
+   11, 2722.24, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   106, 210, '1992-09-07', '1992-09-15',
+   12, 15634, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   107, 211, '1992-09-07', '1992-09-21',
+   15, 142171, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   108, 212, '1992-09-07', '1992-09-10',
+   13, 149570, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   109, 213, '1992-09-08', '1992-09-28',
+   11, 1020935, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   110, 214, '1992-09-09', '1992-09-21',
+   11, 1539.13, 'CASH', 'Y');
+INSERT INTO e_ord VALUES (
+   111, 204, '1992-09-09', '1992-09-21',
+   11, 2770, 'CASH', 'Y');
+INSERT INTO e_ord VALUES (
+   97, 201, '1992-0828', '1992-09-17',
+   12, 84000, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   98, 202, '1992-08-31', '1992-09-10',
+   14, 595, 'CASH', 'Y');
+INSERT INTO e_ord VALUES (
+   99, 203, '1992-08-31', '1992-09-18',
+   14, 7707, 'CREDIT', 'Y');
+INSERT INTO e_ord VALUES (
+   112, 210, '1992-08-31', '1992-09-10',
+   12, 550, 'CREDIT', 'Y');
 
 CREATE TABLE e_region
 (id                         NUMBER(7)
