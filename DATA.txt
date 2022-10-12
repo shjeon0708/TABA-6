@@ -256,15 +256,4 @@ INSERT INTO e_region VALUES (
 COMMIT;
 
 
-
-
-CREATE TABLE s_region
-         ( id                                           NUMBER(7),
-          name                                       VARCHAR2(50)
-                     CONSTRAINT s_region_name_nn NOT NULL,
-                     CONSTRAINT s_region_id_pk PRIMARY KEY (id),
-                     CONSTRAINT s_region_name_uk UNIQUE (name));
-
-
- INSERT INTO empvu30
-VALUES (999, '22TABA', 'STUDENT', NULL, '22-10-05', 1500, NULL, 20);   
+  
