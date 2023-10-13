@@ -1,4 +1,5 @@
 TABA 4기
 
-수업 관련 내용은 깃허브에 올릴 예정입니다.
+10.13 SQL 실습 시험 
 
+https://docs.google.com/forms/d/e/1FAIpQLSeF1dJqQ1H-edCg6PUtvHS4yXXWgltOsKeLLZQADmY_qNHmoQ/viewform?usp=sf_link
