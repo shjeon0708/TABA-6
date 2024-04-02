@@ -1,1 +1,9 @@
-https://velog.io/@s0nnyday/AWS-EC2-%EC%97%90-MySQL-%EC%84%A4%EC%B9%98%EC%97%B0%EA%B2%B0-Amazon-Linux-2
+sudo rm -f /etc/yum.repos.d/mysql*
+
+sudo dnf install https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm
+
+sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+
+sudo yum update
+
+sudo dnf install mysql-community-server
