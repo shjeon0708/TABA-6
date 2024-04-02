@@ -7,3 +7,7 @@ sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
 sudo yum update
 
 sudo dnf install mysql-community-server
+
+sudo systemctl start mysqld.service
+
+sudo systemctl status mysqld.service
