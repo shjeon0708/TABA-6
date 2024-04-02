@@ -1,5 +1,1 @@
-TABA 4기
-
-10.13 SQL 실습 시험 
-
-https://docs.google.com/forms/d/e/1FAIpQLSeF1dJqQ1H-edCg6PUtvHS4yXXWgltOsKeLLZQADmY_qNHmoQ/viewform?usp=sf_link
+https://velog.io/@s0nnyday/AWS-EC2-%EC%97%90-MySQL-%EC%84%A4%EC%B9%98%EC%97%B0%EA%B2%B0-Amazon-Linux-2
