@@ -13,7 +13,7 @@ int main() {
     }
 
     // MySQL 서버에 연결
-    if (mysql_real_connect(conn, "localhost", "root", "your_password", NULL, 0, NULL, 0) == NULL) {
+    if (mysql_real_connect(conn, "localhost", "root", "your_password", "testdb", 0, NULL, 0) == NULL) {
         fprintf(stderr, "mysql_real_connect() failed: %s\n", mysql_error(conn));
         mysql_close(conn);
         return 1;
