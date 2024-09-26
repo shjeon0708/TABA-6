@@ -1,0 +1,7 @@
+C언어 개발 환경 설치
+
+sudo yum install mysql-devel gcc g++
+
+wget https://dev.mysql.com/get/Downloads/Connector-C++/mysql-connector-c++-jdbc-9.0.0-1.el9.x86_64.rpm
+
+sudo yum install -y mysql-connector-c++-jdbc-9.0.0-1.el9.x86_64.rpm
