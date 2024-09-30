@@ -1,0 +1,16 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: postgres-connector
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: my-connect-cluster3
+spec:
+  class: io.confluent.connect.jdbc.JdbcSinkConnector
+  tasksMax: 1
+  config:
+    topics: "example"
+    connection.url: "jdbc:postgresql://postgres-service.kafka.svc.cluster.local:5432/postgres"
+    connection.user: "postgres"
+    connection.password: "Dankook1!"
+    auto.create: "true"
