@@ -1,0 +1,17 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: jdbc-mysql-source-connector
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: my-connect-cluster3
+spec:
+  class: io.confluent.connect.jdbc.JdbcSourceConnector
+  tasksMax: 1
+  config:
+    mode: "incrementing"
+    incrementing.column.name: "id"
+    connection.url: "jdbc:mysql://mysql.kafka.svc.cluster.local:3306/test"
+    connection.user: "root"
+    connection.password: "Dankook1!"
+    table.whitelist: "example"
