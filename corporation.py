@@ -8,7 +8,7 @@ api_key = ' '
 # API 요청
 params = {
     'page': 1,
-    'perPage': 100,
+    'perPage': 900,
     'serviceKey': api_key
 }
 response = requests.get(url, params=params)
